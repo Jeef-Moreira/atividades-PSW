@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugestão</title>
+    <link rel="icon" href="../images/icon.ico" type="image/x-icon">
+    <style>
+        body {
+        background-color: #1db954;
+        color: white;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+        Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 1rem;
+        font-weight: 400;
+        }
+
+        .form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .form label {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .form input[type="submit"] {
+            background-color: #000;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .list {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .list h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .list ul li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .thank {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .thank p {
+            font-size: 18px;
+        }
+
+        .contact {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .contact p {
+            font-size: 18px;
+        }
+
+        .contact a {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .image {
+            width: 100%;
+            text-align: center;
+        }
+
+        .image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="image">
+        <img src="../images/artistas.png" alt="Banner Artistas" usemap="#workmap">
+        <map name="workmap">
+            <!-- Defina as coordenadas para criar uma área circular -->
+            <area shape="circle" coords="718,500,44" href="#abaixo" alt="Below">
+        </map>
+    </div>    
+
+    <div class="form" id="abaixo">
+        <form action="cadastro.php" method="get">
+        <label for="name">Escreva o nome do artista ou banda que você sugere:</label>
+        <input type="text" id="name" name="name" placeholder="Nome do Artista ou Banda" required><br><br>
+
+        
+        <label>Qual seu nível de satisfação com o Artista ou Banda escolhida?</label>
+        <input type="range" name="satisfacao" id="satisfacao" min="0" max="10" value="5"><br><br>
+
+        <input type="submit" value="Enviar Sugestão" name="btnEnviar">
+        </form>
+    </div>
+
+    <div class="list">
+        <h2>Sugestões Anteriores:</h2>
+        <ul>
+            <li>Artista: The Weeknd</li>
+            <li>Artista: Jão</li>
+            <li>Artista: Melanie Martinez</li>
+        </ul>
+    </div>
+
+    <div class="thank">
+        <p>Agradecemos por suas sugestões! Elas são valiosas para nós.</p>
+    </div>
+
+    <div class="contact">
+        <p>Em caso de dúvidas ou problemas, entre em contato conosco através do <a href="mailto:teste@gmail.com">e-mail</a>.</p>
+
+        <a href="../page/index.html"><img src="../images/voltar.png" alt="voltar" title="Voltar"></a>
+    </div>
+</body>
+</html>

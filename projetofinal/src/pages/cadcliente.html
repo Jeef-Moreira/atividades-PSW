@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Cliente</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
+</head>
+<body>
+    <div class="page">
+        <form method="POST" class="formLogin">
+            <h1>Cadastro de Cliente</h1>
+            <p>Preencha os dados do cliente nos campos abaixo.</p>
+            <label for="nome">Nome</label>
+            <input type="nome" placeholder="Digite o nome do cliente" autofocus="true" required />
+            <label for="sobrenome">Sobrenome</label>
+            <input type="sobrenome" placeholder="Digite o sobrenome do cliente" autofocus="true" required />
+            <label for="sexo">Sexo</label>
+            <select id="sexo" name="sexo">
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+                <option value="outro">Outro</option>
+            </select>
+
+            <label for="datanasc">Data de Nascimento</label>
+            <input type="text" id="datanasc" name="datanasc" required>
+
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" required>
+    
+            <label for="rua">Endereço</label>
+            <input type="text" id="endereco" placeholder="Rua, bairro e número" name="endereco" required>
+
+            
+
+            <button type="submit" class="btn">Cadastrar</button>
+        </form>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+             $(function() {
+                $("#birthdate").datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "1900:+nn",
+                    dateFormat: "dd/mm/yy"
+                });
+            });
+    </script>
+    </div>    
+</body>
+</html>

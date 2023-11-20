@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Mesas</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        .tables {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .table {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            margin: 10px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .table:hover {
+            background-color: #aaa;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <h1>Gerenciamento de Mesas</h1>
+
+    <div class="tables">
+            <div class="table" onclick="showTableDetails(1)">Mesa 1
+                <img src="../images/icons/mesa.ico" alt="mesa 1"></div>
+                <div class="table" onclick="showTableDetails(2)">Mesa 2
+                <img src="../images/icons/mesa.ico" alt="mesa 2"></div>
+                <div class="table" onclick="showTableDetails(3)">Mesa 3
+                <img src="../images/icons/mesa.ico" alt="mesa 3"></div>
+                <div class="table" onclick="showTableDetails(4)">Mesa 4
+                <img src="../images/icons/mesa.ico" alt="mesa 4"></div>
+                <div class="table" onclick="showTableDetails(5)">Mesa 5
+                <img src="../images/icons/mesa.ico" alt="mesa 5"></div>
+                <div class="table" onclick="showTableDetails(6)">Mesa 6
+                <img src="../images/icons/mesa.ico" alt="mesa 6"></div>
+                <div class="table" onclick="showTableDetails(7)">Mesa 7
+                <img src="../images/icons/mesa.ico" alt="mesa 7"></div>
+                <div class="table" onclick="showTableDetails(8)">Mesa 8
+                <img src="../images/icons/mesa.ico" alt="mesa 8"></div>
+                <div class="table" onclick="showTableDetails(9)">Mesa 9
+                <img src="../images/icons/mesa.ico" alt="mesa 9"></div>
+                <div class="table" onclick="showTableDetails(10)">Mesa 10
+                <img src="../images/icons/mesa.ico" alt="mesa 10"></div>
+                <div class="table" onclick="showTableDetails(11)">Mesa 11
+                <img src="../images/icons/mesa.ico" alt="mesa 11"></div>
+                <div class="table" onclick="showTableDetails(12)">Mesa 12
+                <img src="../images/icons/mesa.ico" alt="mesa 12"></div>
+                <!-- Adicione mais mesas conforme necessário -->
+        <!-- Adicione mais mesas conforme necessário -->
+    </div>
+
+    <div class="modal" id="tableDetails">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Detalhes da Mesa</h2>
+            <p>Mesa: <span id="tableNumber"></span></p>
+            <p>Status: <span id="tableStatus"></span></p>
+            <p>Capacidade: <span id="tableCapacity"></span> pessoas</p>
+            <div class="options">
+                <button onclick="showOrderForm()">Lançar Pedido</button>
+                <button onclick="associateCustomer()">Associar a Cliente</button>
+                <button onclick="viewOrders()">Visualizar Pedidos</button>
+            </div>
+
+            <form class="formLogin" id="order-form" style="display: none;">
+                <label for="product">Produto:</label>
+                <input type="text" id="product" name="product" required>
+
+                <label for="quantity">Quantidade:</label>
+                <input type="number" id="quantity" name="quantity" required>
+
+                <label for="observation">Observação:</label>
+                <textarea id="observation" name="observation"></textarea>
+
+                <button class="btn type="button" onclick="submitOrder()">Enviar</button>
+            </form>
+
+            <form id="associateForm" style="display: none;">
+                <label for="customerName">Nome do Cliente:</label>
+                <input type="text" id="customerName" name="customerName" required>
+
+                <button type="button" onclick="associateCustomer()">Associar</button>
+            </form>
+
+            <a href="../pages/mesas.html"><img src="../images/icons/back.ico" alt="voltar" title="Voltar"></a>
+        </div>
+    </div>
+
+    <a href="../pages/index.html"><img src="../images/icons/back.ico" alt="voltar" title="Voltar"></a>
+    
+
+    <script>
+        function showTableDetails(tableNumber) {
+            const modal = document.getElementById('tableDetails');
+            const tableDetails = getTableDetails(tableNumber);
+            
+            document.getElementById('tableNumber').textContent = `Mesa ${tableNumber}`;
+            document.getElementById('tableStatus').textContent = tableDetails.status;
+            document.getElementById('tableCapacity').textContent = tableDetails.capacity;
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('tableDetails');
+            modal.style.display = 'none';
+        }
+
+        function showOrderForm() {
+            const orderForm = document.getElementById('order-form');
+            const associateForm = document.getElementById('associateForm')
+            orderForm.style.display = 'block';
+            associateForm.style.display = 'none';
+        }
+
+        function showAssociateCustomerForm() {
+            const orderForm = document.getElementById("order-form");
+            const associateForm = document.getElementById("associateForm");
+            orderForm.style.display = "none";
+            associateForm.style.display = "block";
+        }
+
+        function submitOrder() {
+            // Aqui você pode adicionar a lógica para enviar o pedido
+            // Por enquanto, usamos um alerta como exemplo
+            alert('Pedido enviado com sucesso!');
+            closeModal();
+        }
+
+        function submitAssociate() {
+            // Aqui você pode adicionar a lógica para enviar o pedido
+            // Por enquanto, usamos um alerta como exemplo
+            alert('Cliente associado a mesa com sucesso!');
+            closeModal();
+        }
+
+
+        function viewOrders() {
+            alert('Visualizando pedidos desta mesa...');
+        }
+
+        function getTableDetails(tableNumber) {
+            // Aqui você pode adicionar a lógica para obter os detalhes da mesa
+            // Por enquanto, usamos informações fictícias
+            const details = {
+                status: 'Livre',
+                capacity: 4,
+            };
+            return details;
+        }
+    </script>
+</body>
+</html>

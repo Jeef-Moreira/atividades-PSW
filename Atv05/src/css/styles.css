@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'ReemKufiFun-Bold';
+    src: url('../fonts/ReemKufiFun-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    }
+
+    a:link {
+        color: blue;
+    }
+
+    a:visited {
+        color: blue;
+    }
+
+    a:hover {
+        color: red;
+    }
+
+    a:active {
+        color: yellow;
+    }
+
+    .google {
+        font-family: 'ReemKufiFun-Bold', sans-serif;
+        font-size: 110px;
+        margin: 45px;
+        margin-top: 68px;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: -6px;
+        text-shadow: 5px 5px 5px gray;
+    }
+
+    .trademark {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+        display: inline-flex;
+        margin-right: 5px;
+        letter-spacing: 0;
+        vertical-align: super;
+    }
+
+    .g {
+        color: #4285F4;
+    }
+
+    .o-1 {
+        color: #DB4437;
+    }
+
+    .o-2 {
+        color: #F4B400;
+    }
+
+    .g-2 {
+        color: #4285F4;
+    }
+
+    .l {
+        color: #0F9D58;
+    }
+
+    .e {
+        color: #DB4437; 
+    }
+
+    .search {
+        text-align: center;
+        margin-top: 20px;
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    .search-box {
+        width: 390px;
+        padding: 6px;
+        border: 1px solid white;
+        border-radius: 4px;
+        margin-bottom: 10px;
+    }
+
+    .entername {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px;
+    }
+
+    .google-button {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        margin: 0 1px;
+    }
+
+    .lucky-button {
+        font-family: Arial, Helvetica, sans-serif;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 4px;
+        margin: 0 1px;
+    }
+
+    label {
+        margin-bottom: 5px;
+    }

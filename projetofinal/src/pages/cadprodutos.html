@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="page">
+        <form method="POST" class="formLogin">
+            <h1>Cadastro de Produtos </h1>
+            <p>Preencha os dados do produto nos campos abaixo.</p>
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" required>
+
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" name="nome" required>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" rows="4" required></textarea>
+
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" name="valor" step="0.01" required>
+
+        <button class="btn" type="submit">Cadastrar</button>
+    </form>
+
+    <a href="../pages/index.html"><img src="../images/icons/back.ico" alt="voltar" title="Voltar"></a>
+</body>
+</html>

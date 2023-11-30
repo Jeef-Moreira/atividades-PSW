@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro Cliente</title>
+    <!-- ... (seu código anterior) -->
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js"></script>
 </head>
 <body>
     <div class="page">
         <form method="POST" class="formLogin">
             <h1>Cadastro de Cliente</h1>
-            <p>Preencha os dados do cliente nos campos abaixo.</p>
+
+            <div class="image-upload-container">
+                <input type="file" id="imagem" name="imagem" accept="image/*" class="invisible">
+                <label for="imagem" class="image-upload-label">
+                    <div class="image-preview"></div>
+                    <span>Adicionar Imagem</span>
+                </label>
+            </div>
+
             <label for="nome">Nome</label>
-            <input type="nome" placeholder="Digite o nome do cliente" autofocus="true" required />
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente" autofocus="true" required />
+
             <label for="sobrenome">Sobrenome</label>
-            <input type="sobrenome" placeholder="Digite o sobrenome do cliente" autofocus="true" required />
+            <input type="text" id="sobrenome" name="sobrenome" placeholder="Digite o sobrenome do cliente" required />
+
             <label for="sexo">Sexo</label>
             <select id="sexo" name="sexo">
                 <option value="masculino">Masculino</option>
@@ -30,27 +35,41 @@
 
             <label for="telefone">Telefone</label>
             <input type="tel" id="telefone" name="telefone" required>
-    
-            <label for="rua">Endereço</label>
-            <input type="text" id="endereco" placeholder="Rua, bairro e número" name="endereco" required>
 
-            
+            <label for="endereco">Endereço</label>
+            <input type="text" id="endereco" name="endereco" placeholder="Rua, bairro e número" required>
 
             <button type="submit" class="btn">Cadastrar</button>
         </form>
-
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script>
-             $(function() {
-                $("#birthdate").datepicker({
+            $(function() {
+                $("#datanasc").datepicker({
                     changeMonth: true,
                     changeYear: true,
                     yearRange: "1900:+nn",
                     dateFormat: "dd/mm/yy"
                 });
+
+                // Atualiza a visualização da imagem quando o usuário escolhe um arquivo
+                $("#imagem").change(function() {
+                    readURL(this);
+                });
+
+                function readURL(input) {
+                    if (input.files && input.files[0]) {
+                        var reader = new FileReader();
+                        
+                        reader.onload = function (e) {
+                            $(".image-preview").css("background-image", "url(" + e.target.result + ")");
+                        }
+                        
+                        reader.readAsDataURL(input.files[0]);
+                    }
+                }
             });
-    </script>
+        </script>
     </div>    
 </body>
 </html>

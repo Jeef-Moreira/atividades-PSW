@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Cliente</title>
+    <!-- Inclua os estilos necessários aqui -->
+
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #f5efef;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .edit-container {
+        background: #ffffff;
+        border: 3px solid #0ef;
+        border-radius: 20px;
+        padding: 30px;
+        width: 300px; /* Ajuste conforme necessário */
+      }
+
+      label {
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background: rgb(152, 79, 229);
+        border: none;
+        outline: none;
+        color: #ffffff;
+        font-weight: 600;
+        padding: 8px 22px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      button:hover {
+        background: #fff;
+        color: rgb(152, 79, 229);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="edit-container">
+      <h1>Editar Cliente</h1>
+      <form id="editForm" onsubmit="saveChanges(); return false;">
+        <label for="name">Nome</label>
+        <input type="text" id="name" required>
+
+        <label for="gender">Sexo</label>
+        <select id="gender" name="gender" required>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
+          <option value="Outro">Outro</option>
+        </select>
+
+        <label for="phone">Telefone</label>
+        <input type="tel" id="phone" required>
+
+        <label for="address">Endereço</label>
+        <input type="text" id="address" required>
+
+        <button type="submit">Salvar Alterações</button>
+      </form>
+    </div>
+
+    <script>
+      // Adicione o script JavaScript para recuperar os detalhes do cliente e preencher os campos
+      const urlParams = new URLSearchParams(window.location.search);
+      const clientId = urlParams.get('clientId');
+
+      // Simulação de dados do cliente (substitua isso pelos dados reais do seu sistema)
+      const clientDetails = {
+        name: "Nome do Cliente",
+        gender: "Masculino",
+        phone: "(99) 9999-9999",
+        address: "Rua Exemplo, 123"
+      };
+
+      // Preencher os campos com os detalhes do cliente
+      document.getElementById('name').value = clientDetails.name;
+      document.getElementById('gender').value = clientDetails.gender;
+      document.getElementById('phone').value = clientDetails.phone;
+      document.getElementById('address').value = clientDetails.address;
+
+      // Função para salvar as alterações (simulação)
+      function saveChanges() {
+        alert('Alterações salvas com sucesso!');
+        // Redirecionar de volta para a página principal após salvar as alterações
+        window.location.href = 'index.html';
+      }
+    </script>
+  </body>
+</html>

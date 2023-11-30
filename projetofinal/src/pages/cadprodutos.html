@@ -11,21 +11,52 @@
         <form method="POST" class="formLogin">
             <h1>Cadastro de Produtos </h1>
             <p>Preencha os dados do produto nos campos abaixo.</p>
-        <label for="id">ID:</label>
-        <input type="text" id="id" name="id" required>
 
-        <label for="nome">Nome do Produto:</label>
-        <input type="text" id="nome" name="nome" required>
+            <div class="image-upload-container">
+                <input type="file" id="imagem" name="imagem" accept="image/*" class="invisible">
+                <label for="imagem" class="image-upload-label">
+                    <div class="image-preview"></div>
+                    <span>Adicionar Imagem</span>
+                </label>
+            </div>
 
-        <label for="descricao">Descrição:</label>
-        <textarea id="descricao" name="descricao" rows="4" required></textarea>
+            <label for="id">ID:</label>
+            <input type="text" id="id" name="id" required>
 
-        <label for="valor">Valor:</label>
-        <input type="number" id="valor" name="valor" step="0.01" required>
+            <label for="nome">Nome do Produto:</label>
+            <input type="text" id="nome" name="nome" required>
 
-        <button class="btn" type="submit">Cadastrar</button>
-    </form>
+            <label for="descricao">Descrição:</label>
+            <textarea id="descricao" name="descricao" rows="4" required></textarea>
 
-    <a href="../pages/index.html"><img src="../images/icons/back.ico" alt="voltar" title="Voltar"></a>
+            <label for="valor">Valor:</label>
+            <input type="number" id="valor" name="valor" step="0.01" required>
+
+            <button class="btn" type="submit">Cadastrar</button>
+        </form>
+
+        <a href="../pages/index.html"><img src="../images/icons/back.ico" alt="voltar" title="Voltar"></a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function() {
+            $("#imagem").change(function() {
+                readURL(this);
+            });
+
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    
+                    reader.onload = function (e) {
+                        $(".image-preview").css("background-image", "url(" + e.target.result + ")");
+                    }
+                    
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+    </script>
 </body>
 </html>

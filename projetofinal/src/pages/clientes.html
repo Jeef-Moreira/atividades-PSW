@@ -14,8 +14,32 @@
       href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
     />
     <link rel="stylesheet" type="text/css" href="../css/clstyles.css" />
+    <style>
+      /* Adicione o estilo para centralizar o campo de busca */
+      .search-container {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      /* Adicione estilo para ajustar o posicionamento dos botões de edição e exclusão */
+      .button {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .button button {
+        flex-grow: 1;
+        margin: 0 5px;
+      }
+    </style>
   </head>
   <body>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Buscar por nome..." oninput="searchClients()">
+    </div>
+    
     <section>
       <div class="swiper mySwiper container">
         <div class="swiper-wrapper content">
@@ -40,8 +64,8 @@
                 </p>
               </div>
               <div class="button">
-                <button class="edit">Editar</button>
-                <button class="excluir">Excluir</button>
+                <button class="edit" onclick="openEditModal('clientId1')">Editar</button>
+                <button class="excluir" onclick="showDeleteConfirmation('clientId1')">Excluir</button>
               </div>
             </div>
           </div>
@@ -247,6 +271,118 @@
       <div class="swiper-button-prev"></div>
       <div class="swiper-pagination"></div>
     </section>
+
+    <script>
+       // Armazena as informações originais dos cards
+       var originalData = [];
+        
+        // Adiciona um ouvinte de eventos de clique a todos os botões de "Editar"
+        document.querySelectorAll('.edit').forEach(function (button, index) {
+            button.addEventListener('click', function () {
+                // Obtém as informações do produto com base no índice (pode ser ID, se estiver disponível)
+                var card = document.querySelectorAll('.card-content')[index];
+                var name = card.querySelector('.name').innerText;
+                var informacoes = card.querySelector('.user-info-item').innerText;
+  
+    
+                // Armazena as informações originais para possível reversão
+                originalData[index] = { card, name, informacoes };
+    
+                // Cria uma página de edição dinâmica
+                var editPage = `
+                  <div class="name-id">
+                        <h1 class="text-center">Editar</h1>
+                        <form id="editForm">
+                            <div class="mb-3">
+                                <label for="productName" class="form-label">Nome do Produto</label>
+                                <input type="text" class="form-control" id="productName" value="${title}">
+                            </div>
+                            <div class="mb-3">
+                                <label for="productDescription" class="form-label">Descrição</label>
+                                <textarea class="form-control" id="productDescription">${description}</textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="productPrice" class="form-label">Preço</label>
+                                <input type="text" class="form-control" id="productPrice" value="${price}">
+                            </div>
+                            <button type="button" class="btn btn-primary" onclick="saveChanges(${index})">Salvar Alterações</button>
+                        </form>
+                    </div>`;
+    
+                // Substitui o conteúdo atual do body pelo formulário de edição
+                document.body.innerHTML = editPage;
+            });
+        });
+    
+        // Função para salvar as alterações
+        function saveChanges(index) {
+            // Obtém os valores atualizados do formulário
+            var newName = document.getElementById('productName').value;
+            var newDescription = document.getElementById('productDescription').value;
+            var newPrice = document.getElementById('productPrice').value;
+    
+            // Atualiza as informações no card original
+            var card = document.querySelectorAll('.card')[index];
+            card.querySelector('.card-title').innerText = newName;
+            card.querySelector('.card-text').innerText = newDescription;
+            card.querySelector('.mb-5 h3').innerText = newPrice;
+    
+            // Restaura o conteúdo original da página inicial
+            restoreOriginalContent();
+        }
+    
+        // Função para restaurar o conteúdo original da página inicial
+        function restoreOriginalContent() {
+            // Aguarde um curto período de tempo antes de recarregar para garantir que as alterações no DOM tenham tempo para ocorrer
+            setTimeout(function () {
+                // Volta para a página inicial
+                window.location.href = window.location.origin + window.location.pathname;
+            }, 100);
+        }
+    
+        // Função para filtrar produtos com base na entrada do usuário
+        function filterProducts() {
+            var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    
+            // Itera sobre todos os cards e exibe/oculta conforme o filtro
+            document.querySelectorAll('.card').forEach(function (card) {
+                var title = card.querySelector('.card-title').innerText.toLowerCase();
+                var description = card.querySelector('.card-text').innerText.toLowerCase();
+    
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+      // Função para abrir o modal de edição
+      function openEditModal(clientId) {
+        // Aqui você pode implementar a lógica para abrir um modal ou navegar para outra página de edição
+        console.log("Abrir modal para editar cliente com ID:", clientId);
+      }
+    
+      // Função para exibir a mensagem de exclusão
+      function showDeleteConfirmation(clientId) {
+        const confirmation = confirm("Deseja realmente excluir esse perfil?");
+        if (confirmation) {
+          // Aqui você pode implementar a lógica para excluir o cliente com o ID especificado
+          console.log("Excluir cliente com ID:", clientId);
+        }
+      }
+    
+      // Função para realizar a busca
+      function searchClients() {
+        const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+        const cards = document.querySelectorAll(".swiper-slide");
+        
+        cards.forEach((card) => {
+          const name = card.querySelector(".name").textContent.toLowerCase();
+          card.style.display = name.includes(searchTerm) ? "flex" : "none";
+        });
+      }
+    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script src="../js/cscripts.js"></script>
   </body>

@@ -213,6 +213,42 @@ body {
     cursor: pointer;
 }
 
+/* ... (seu código anterior) */
+
+.image-upload-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.invisible {
+    display: none;
+}
+
+.image-upload-label {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+.image-upload-label span {
+    display: block;
+    margin-top: 10px;
+}
+
+.image-preview {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    overflow: hidden;
+}
+
+/* Adicione estilos adicionais conforme necessário */
+
+
 /* Estilos para os produtos na lista */
 /* ... */
 
